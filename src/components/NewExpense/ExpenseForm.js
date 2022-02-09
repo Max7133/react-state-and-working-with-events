@@ -2,47 +2,70 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  /* const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState(""); */
-  // I could pass in 1 useState instead of 3
-  const [userInput, setUserInput] = useState({
+  const [enteredDate, setEnteredDate] = useState("");
+  // 2nd option: I could pass in 1 useState instead of 3
+  /*   const [userInput, setUserInput] = useState({
     enteredTitle: "",
     enteredAmount: "",
     enteredDate: "",
-  });
+  }); */
   // Handling user input
   // JS way
   // document.getElementById('').addEventListener('click', (event) => {})
   // React way
   const titleChangeHandler = (event) => {
-    // setEnteredTitle(event.target.value);
-    setUserInput({
+    // 1st option
+    setEnteredTitle(event.target.value);
+    // 2nd option
+    /*     setUserInput({
       // takes an object, pull out all the key value pairs,
       // and adds them to this new object, and then I can still override key value pairs
       ...userInput,
       enteredTitle: event.target.value,
-    });
+    }); */
+    // 3rd option
+    // I get the previous state snapshot
+    /*     setUserInput((prevState) => {
+      //return new state snapshot, and makes sure that the prevState was the latest before updating the state
+      return { ...prevState, enteredTitle: event.target.value };
+    }); */
     console.log(enteredTitle);
   };
   const amountChangeHandler = (event) => {
-    //setEnteredAmount(event.target.value);
-    setUserInput({
+    setEnteredAmount(event.target.value);
+    /*     setUserInput({
       ...userInput,
       enteredAmount: event.target.value,
-    });
+    }); */
     console.log(enteredAmount);
   };
   const dateChangeHandler = (event) => {
-    //setEnteredDate(event.target.value);
-    setUserInput({
+    setEnteredDate(event.target.value);
+    /*     setUserInput({
       ...userInput,
       enteredDate: event.target.value,
-    });
+    }); */
     console.log(enteredDate);
   };
+
+  const submitHandler = (event) => {
+    // prevents the default request sent to server, after this, after submitting the form, the page won't reload
+    event.preventDefault();
+
+    // combined object, to combine all entered data
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      // constructing a new Date with built in Date contructor, I passed the entered date, that will parse that date string and convert it into a date object
+      date: new Date(enteredDate),
+    };
+    console.log(expenseData);
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       {/* All inputs */}
       <div className="new-expense__controls">
         {/* Single Input */}
