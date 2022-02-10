@@ -25,6 +25,11 @@ const App = () => {
     },
   ];
 
+  const addExpenseHandler = (expense) => {
+    console.log("In App.s");
+    console.log(expense);
+  };
+
   // <Expenses expensesprop={expenses} /> "expensesprop" because I named it "expensesprop" in Expenses.js return() title={props.expensesprop[0].title}
   // THIS IS HOW JSX WORK BEHIND THE SCENES
   // return React.createElement(
@@ -36,7 +41,7 @@ const App = () => {
 
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expensesprop={expenses} />
     </div>
   );
