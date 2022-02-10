@@ -3,7 +3,6 @@ import ExpenseForm from "../NewExpense/ExpenseForm";
 import "./NewExpense.css";
 
 // in App.js <NewExpense onAddExpense={addExpenseHandler} />
-
 const NewExpense = (props) => {
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
