@@ -62,6 +62,9 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate),
     };
     console.log(expenseData);
+
+    // executing saveExpenseDataHandler = (enteredExpenseData) from NexExpense (line 7.)
+    // I can do that(even if its not defined in ExpenseForm) because I'm passing a pointer edit in NewExpense(line 21) <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}
     props.onSaveExpenseData(expenseData);
     // because I binded value to enteredTitle in the return(), after the form is submited it will clear all the text inputed in to that form
     setEnteredTitle("");
