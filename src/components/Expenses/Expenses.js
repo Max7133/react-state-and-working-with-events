@@ -12,6 +12,8 @@ const Expenses = (props) => {
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
+
+  // props.items.map --- Retransforms the array to an array full of JSX items
   return (
     <div>
       <Card className="expenses">
@@ -19,26 +21,13 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        <ExpenseItem
-          title={props.expensesprop[0].title}
-          amount={props.expensesprop[0].amount}
-          date={props.expensesprop[0].date}
-        />
-        <ExpenseItem
-          title={props.expensesprop[1].title}
-          amount={props.expensesprop[1].amount}
-          date={props.expensesprop[1].date}
-        />
-        <ExpenseItem
-          title={props.expensesprop[2].title}
-          amount={props.expensesprop[2].amount}
-          date={props.expensesprop[2].date}
-        />
-        <ExpenseItem
-          title={props.expensesprop[3].title}
-          amount={props.expensesprop[3].amount}
-          date={props.expensesprop[3].date}
-        />
+        {props.items.map((expense) => (
+          <ExpenseItem
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
       </Card>
     </div>
   );
